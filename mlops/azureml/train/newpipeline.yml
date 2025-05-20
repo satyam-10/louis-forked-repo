@@ -2,7 +2,7 @@ $schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
 type: pipeline
 display_name: Pipeline-Final-Project  # Provide the display name for the pipeline
 experiment_name: random-forest-training-pipeline  # Provide the experiment name
-description: random-forest-training-pipeline  # Provide the description for the pipeline
+description: Training-pipeline to predict prices in used cars  # Provide the description for the pipeline
 
 inputs:
   raw_data:
