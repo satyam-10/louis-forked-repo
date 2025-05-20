@@ -30,7 +30,7 @@ def main(args):
     # Reading Data
     df = pd.read_csv(args.raw_data)
     
-    # Encoding the categorical 'Type' column
+    # Encoding the categorical 'Segment' column
     # Note: We should ideally use one-hot encoding here as there's no inherent order between the categories
     # However, as we're using a decision tree model, label encoding also works here
     label_encoder = LabelEncoder()
