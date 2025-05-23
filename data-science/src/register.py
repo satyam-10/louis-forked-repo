@@ -35,10 +35,6 @@ def main(args):
     # Step 3: Register the logged model using its URI and model name, and retrieve its registered version.  
     # Step 4: Write model registration details, including model name and version, into a JSON file in the specified output path.  
 
-    '''Loads the best-trained model from the sweep job and registers it'''
-
-    print("Registering ", args.model_name)
-
     # Load model
     model = mlflow.sklearn.load_model(args.model_path)
 
