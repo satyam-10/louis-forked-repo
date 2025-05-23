@@ -16,7 +16,7 @@ def parse_args():
     '''Parse input arguments'''
 
     parser = argparse.ArgumentParser("prep")
-    parser.add_argument("--raw_data", type=str, help="Path to raw data")
+    parser.add_argument("--data", type=str, help="Path to raw data")
     parser.add_argument("--train_data", type=str, help="Path to train dataset")
     parser.add_argument("--test_data", type=str, help="Path to test dataset")
     parser.add_argument("--test_train_ratio", type=float, default=0.2, help="Test-train ratio")
@@ -28,7 +28,7 @@ def main(args):
     '''Read, split, and save datasets'''
 
     # Reading Data
-    df = pd.read_csv(args.raw_data)
+    df = pd.read_csv(args.data)
     
     # Encoding the categorical 'Segment' column
     # Note: We should ideally use one-hot encoding here as there's no inherent order between the categories
@@ -42,12 +42,16 @@ def main(args):
     # Save train and test data
     os.makedirs(args.train_data, exist_ok=True)
     os.makedirs(args.test_data, exist_ok=True)
-    train_df.to_csv(os.path.join(args.train_data, "used_cars_train.csv"), index=False)
-    test_df.to_csv(os.path.join(args.test_data, "used_cars_test.csv"), index=False)
+    train_df.to_csv(os.path.join(args.train_data, "used_cars.csv"), index=False)
+    test_df.to_csv(os.path.join(args.test_data, "used_cars.csv"), index=False)
 
     # Log the metrics
-    mlflow.log_metric('train size', train_df.shape[0])
-    mlflow.log_metric('test size', test_df.shape[0])
+    #mlflow.log_metric('train size', train_df.shape[0])
+    #mlflow.log_metric('test size', test_df.shape[0])
+
+    # Log completion
+    mlflow.log_metric("train_size", len(train_df))
+    mlflow.log_metric("test_size", len(test_df))
 
 if __name__ == "__main__":
     mlflow.start_run()
