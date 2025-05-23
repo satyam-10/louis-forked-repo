@@ -23,9 +23,9 @@ def parse_args():
     parser.add_argument("--train_data", type=str, help="Path to train dataset")  # Specify the type for train_data
     parser.add_argument("--test_data", type=str, help="Path to test dataset")  # Specify the type for test_data
     parser.add_argument("--model_output", type=str, help="Path of output model")  # Specify the type for model_output
-    parser.add_argument('--n_estimators', type=str, default=100,
+    parser.add_argument('--n_estimators', type=number, default=100,
                         help='The number of trees in the forest')  # Specify the type and default value for n_estimators
-    parser.add_argument('--max_depth', type=str, default=None,
+    parser.add_argument('--max_depth', type=number, default=None,
                         help='The maximum depth of the tree')  # Specify the type and default value for max_depth
 
     args = parser.parse_args()
@@ -56,7 +56,7 @@ def main(args):
 
     # Initialize and train a RandomForest Regressor
     model = RandomForestRegressor(n_estimators=args.n_estimators, max_depth=args.max_depth, random_state=42)  # Provide the arguments for RandomForestRegressor
-    model.________(X_train, y_train)  # Train the model
+    model.fit(X_train, y_train)  # Train the model
 
     # Log model hyperparameters
     mlflow.log_param("model", "RandomForestRegressor")  # Provide the model name
