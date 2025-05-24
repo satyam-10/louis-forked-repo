@@ -19,4 +19,4 @@ variables:
 
   # For pipeline reference
   resource_group: glresourcegroup
-  aml_workspace: glresourcegroup
+  aml_workspace: azuremlgl
