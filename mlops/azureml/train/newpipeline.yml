@@ -42,6 +42,7 @@ jobs:
   sweep_step:
     name: sweep_job
     display_name: job_for_sweep  # Hint: Provide the display name for the job
+    trial:
     type: sweep
     inputs:
       train_data: ${{parent.jobs.prep_data.outputs.train_data}}
